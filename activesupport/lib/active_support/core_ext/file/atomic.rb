@@ -39,7 +39,7 @@ class File
           chown(old_stat.uid, old_stat.gid, temp_file.path)
           # This operation will affect filesystem ACL's
           chmod(old_stat.mode, temp_file.path)
-        rescue Errno::EPERM, Errno::EACCES
+        rescue Errno::EPERM, Errno::EACCES, NotImplementedError
           # Changing file ownership failed, moving on.
         end
       end
